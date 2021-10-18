@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="~/css/color-complete-task.css">
+    <link rel="stylesheet" href="~/css/themes.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <!--MainLink-->
+                    <a asp-controller="Home" asp-action="Index">[Home]</a>
+                </div>
+                <div class="col">
+                    <!--Search-->
+                    <!--TODO
+                    <form action="" method="post">
+                    <div class="inp">Поиск:
+                    <input type="text" class="form-control col-sm-12">
+                    </div>
+                    </form>-->
+                </div>
+                <div class="col">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Login" asp-action="Index">Log In</a>
+                    }
+                    else
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                        <a asp-controller="Admin" asp-action="Index">AdminPanel</a>
+                        }
+                        <a asp-controller="Login" asp-action="Profile"><partial name="_UserInfo" /></a>
+                        <a asp-controller="Task" asp-action="Create">Create Task</a>
+                        <a asp-controller="Login" asp-action="Logout">Log Off</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+
+    </html>

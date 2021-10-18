@@ -1,0 +1,21 @@
+﻿@model iTransitionCourse.Entity.User
+<partial name="_Header" />
+<p>Complete task count: @Model.CompleteTasks.Tasks.Count()</p>
+<p>Count create task: @Model.Tasks.Count()</p>
+<h1>Task List</h1>
+<table class="table">
+    <tr><td>Label</td><td>Action</td></tr>
+    @foreach (var item in Model.Tasks)
+    {
+        <tr>
+            <td>@item.Title (&#9733;@item.AvgRating.ToString())</td>
+            <td>
+                <a type="submit" class="btn btn-primary" asp-controller="Task" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a type="submit" class="btn btn-danger"  asp-controller="Task" asp-action="Delete" asp-route-id="@item.Id" 
+                        onclick="return confirm('Delete task?')">
+                Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+<partial name="_Footer" />

@@ -1,0 +1,20 @@
+﻿@model iTransitionCourse.Entity.Task
+<partial name="_Header" />
+<h1>Task Edit</h1>
+<form asp-action="Edit" asp-controller="Task" asp-route-id="@Model.Id">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label">Title</label>
+        <input type="text" asp-for="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Description</label>
+        <input type="text" asp-for="Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="RightAnswers" class="control-label">Right Answer</label>
+        <input type="text" value="" asp-for="RightAnswers" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-secondary" />
+    </div>
+</form>

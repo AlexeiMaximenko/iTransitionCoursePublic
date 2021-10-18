@@ -1,0 +1,15 @@
+﻿@model ExternalLoginViewModel
+<partial name="_Header" />
+<form asp-controller="Login" asp-action="ExternalRegister" method="post">
+    <input hidden asp-for="ReturnUrl" />
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label class="control-label">>UserName</label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-secondary">Signin</button>
+    </div>
+</form>

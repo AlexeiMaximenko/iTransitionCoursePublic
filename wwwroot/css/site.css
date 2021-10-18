@@ -1,0 +1,9 @@
+﻿header{
+  position: sticky;
+  background-color: white;
+  top: 0;
+}
+.inp{
+  display:  flex;
+  text-align: center;
+}

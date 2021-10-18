@@ -1,0 +1,32 @@
+﻿@model List<iTransitionCourse.Entity.User>
+<partial name="_Header" />
+<h1>Home</h1>
+<table class="table">
+    <tr><td>Label</td><td>Creator</td></tr>
+    @foreach (var user in Model)
+    {
+        foreach(var task in user.Tasks)
+                {
+            @if (user.UserName == User?.Identity.Name)
+            {
+            continue;
+            }
+             @if (User.Identity.IsAuthenticated)
+                    {
+                     @if (Model.Find(u => u.UserName == User?.Identity.Name).CompleteTasks.Tasks.Contains(task))
+                        {
+                        <tr class="complete" onclick="window.location.href = '/Task/Resolve/@task.Id'; return false">
+                        <td>@task.Title (&#9733;@task.AvgRating.ToString())
+                        <td>@task.User?.UserName</td>
+                        </tr>
+                        continue;
+                        }
+                    }
+            <tr onclick="window.location.href = '/Task/Resolve/@task.Id'; return false">
+            <td>@task.Title (&#9733;@task.AvgRating.ToString())</td>
+            <td>@task.User?.UserName</td>
+            </tr>
+                }
+    }
+</table>
+<partial name="_Footer" />
