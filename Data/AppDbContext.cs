@@ -28,7 +28,6 @@ namespace iTransitionCourse.Data
         }
         public DbSet<Task> CompleteTasks { get; set; }
         public DbSet<Task> Tasks { get; set; }
-        public DbSet<TaskGroup> TaskGroup { get; set; }
         public DbSet<Rating> Rating { get; set; }
     }
 }

@@ -18,16 +18,5 @@ namespace iTransitionCourse.Controllers
         {
             return View();
         }
-
-        [HttpPost]
-        public IActionResult Index(string a)
-        {
-            _db.TaskGroup.Add(new TaskGroup("Java"));
-            _db.TaskGroup.Add(new TaskGroup("Math"));
-            _db.TaskGroup.Add(new TaskGroup("History"));
-            _db.TaskGroup.Add(new TaskGroup("Social"));
-            _db.SaveChanges();
-            return View();
-        }
     }
 }

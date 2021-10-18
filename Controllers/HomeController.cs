@@ -32,9 +32,6 @@ namespace iTransitionCourse.Controllers
 
         public async Task<IActionResult> CreateTestData()
         {
-            new Theme() { Name = "WhiteTheme" };
-            new Theme() { Name = "BlackTheme" };
-
             var task1 = new Entity.Task
             {
                 Title = "Первый таск",
@@ -54,7 +51,7 @@ namespace iTransitionCourse.Controllers
             var task3 = new Entity.Task
             {
                 Title = "Третий таск",
-                User = _db.Users.ToList().ElementAt(1),
+                User = _db.Users.ToList().ElementAt(0),
                 Description = "куку мир 3",
                 RightAnswers = new List<string>() { "3" },
                 CreateDate = DateTime.Now

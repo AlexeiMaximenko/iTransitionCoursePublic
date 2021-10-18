@@ -1,26 +1,25 @@
-﻿@model TaskResolveViewModel
+﻿@model iTransitionCourse.Entity.Task
 <partial name="_Header" />
 
-<h1>@Model.Title</h1>
-<form asp-action="SetRating" asp-controller="Task">
-    <input type="hidden" name="id" value="@Model.Id" />
-    <input type="range" min="1" max="5" name="ratingValue" />
-    <input type="submit" value="Set Rating" class="btn btn-secondary" />
-</form>
-<div class="form-group">
-    <label class="control-label">Text</label>
-    <label class="control-label">@Model.Description</label>
-</div>
+<h1>@Model.Title (&#9733;@Model.AvgRating)</h1>
 
-<form>
-    <input type="hidden" asp-for="Id" value="@Model.Id" />
-    <input type="hidden" asp-for="Title" value="@Model.Title" />
-    <input type="hidden" asp-for="Description" value="@Model.Description" />
     <div class="form-group">
-        <label class="control-label">Solution</label>
-        <input type="text" asp-for="@Model.Answer" />
+        <h3>Description</h3>
+        <h4>@Model.Description</h4>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Right Answer</label>
+        @foreach(var item in Model.RightAnswers)
+            {
+                <p>@item </p>
+            }
     </div>
     <div class="form-group">
-        <input type="submit" asp-action="Resolve" asp-controller="Task" value="Resolve" class="btn btn-secondary" />
+
+        <a type="submit" asp-action="Edit" asp-controller="Task" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+        <a type="submit" class="btn btn-danger" asp-controller="Task" asp-action="Delete" asp-route-id="@Model.Id"
+           onclick="return confirm('Delete task?')">
+            Delete
+        </a>
     </div>
-</form>

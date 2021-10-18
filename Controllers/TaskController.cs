@@ -23,14 +23,7 @@ namespace iTransitionCourse.Controllers
 
         public async Task<ActionResult> Details(string id)
         {
-            var task = await _db.Tasks.FirstOrDefaultAsync(p => p.Id == id);
-            var taskModel = new TaskResolveViewModel()
-            {
-                Id = task.Id,
-                Title = task.Title,
-                Description = task.Description
-            };
-            return View(taskModel);
+            return View(await _db.Tasks.FirstOrDefaultAsync(p => p.Id == id));
         }
 
         public async Task<ActionResult> Resolve(string id)
@@ -48,6 +41,7 @@ namespace iTransitionCourse.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> Resolve(TaskResolveViewModel model)
         {
             var task = await _db.Tasks.FirstOrDefaultAsync(p => p.Id == model.Id);
@@ -106,13 +100,13 @@ namespace iTransitionCourse.Controllers
                     rate.Value = ratingValue;
                     _db.SaveChanges();
                     task.UpdateRating();
-                    return Redirect($"/Task/Details/{id}");
+                    return Redirect($"/Task/Resolve/{id}");
                 }
             }
             task.Rating.Add(new Rating() { Value = ratingValue, User = user});
             _db.SaveChanges();
             task.UpdateRating();
-            return Redirect($"/Task/Details/{id}");
+            return Redirect($"/Task/Resolve/{id}");
         }
 
         [Authorize]

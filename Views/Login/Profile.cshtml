@@ -10,6 +10,7 @@
         <tr>
             <td>@item.Title (&#9733;@item.AvgRating.ToString())</td>
             <td>
+                <a type="submit" class="btn btn-primary" asp-controller="Task" asp-action="Details" asp-route-id="@item.Id">Details</a>
                 <a type="submit" class="btn btn-primary" asp-controller="Task" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                 <a type="submit" class="btn btn-danger"  asp-controller="Task" asp-action="Delete" asp-route-id="@item.Id" 
                         onclick="return confirm('Delete task?')">

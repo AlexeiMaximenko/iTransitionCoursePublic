@@ -98,7 +98,6 @@ namespace iTransitionCourse.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-            new TaskGroup("Java");
             return View();
         }
 
